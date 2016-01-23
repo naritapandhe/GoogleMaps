@@ -101,6 +101,7 @@ html, body {
 					<li><a id="getDirection" data-value="37.785704, -122.396937">
 							Destination: ClickTime (282 2nd Street 4th floor, San Francisco,
 							CA 94105)</a></li>
+						
 
 				</ul>
 			</div>
@@ -113,6 +114,9 @@ html, body {
 		<div class="row">
 			<div class="col-sm-9 col-md-10 main">
 				<h2 class="sub-header">Coffe Shops (Nearby ClickTime)</h2>
+				<span id="helpBlock" class="help-block">Below list is limited to coffee shops very close(< 3miles) to Clicktime's office, so that Devs can enjoy a hot cup of coffee :) </span>
+				<span id="helpBlock" class="help-block">Select any one of the coffee shops or select multiple and click on Get Directions! </span>
+				<span id="helpBlock" class="help-block">Directions will be displayed on the right side of the map, including stopovers at the coffee shop </span>
 				<div class="table-responsive">
 					<table class="table table-striped" id="coffeShops">
 						<thead>
@@ -133,7 +137,7 @@ html, body {
 
 		<div class="row" style="margin-left: 2%;">
 			<!-- Standard button -->
-			<button type="button" class="btn btn-default" id="getDirections">Get
+			<button type="button" class="btn btn-success" id="getDirections">Get
 				Directions</button>
 		</div>
 	</div>
