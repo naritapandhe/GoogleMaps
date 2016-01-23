@@ -119,6 +119,7 @@ html, body {
 							<tr>
 								<th>#</th>
 								<th>Name</th>
+								<th>Address</th>
 								<th>Select from where to get the coffee and donots</th>
 
 							</tr>
@@ -188,6 +189,9 @@ html, body {
 							+ '<td>'
 							+ results[i].name
 							+ '</td>'
+							+'<td>'
+							+results[i].vicinity
+							+'</td>'
 							+ '<td><input type="checkbox" data="'+checkboxID+'" id="'+results[i].id+'" class="coffeShopLocation"></td>'
 							+ '</tr>';
 
@@ -220,17 +224,19 @@ html, body {
 		$(document).ready(function() {
 			$('#getDirections').click(function() {
 				var startAddress;
-				var coffeeShopList = new Array();
+				var waypts = [];
 				console.log('tada!!');
 				$('input[class="coffeShopLocation"]:checked').each(function() {
 					if ($(this).is(':checked'))
 						console.log($(this).attr("data"));
-						coffeeShopList.push($(this).attr("data"));
+						waypts.push({
+					        location: $(this).attr("data"),
+					        stopover: true
+					      });
 				});
 				
 				
-				
-		        navigator.geolocation.getCurrentPosition(function(position) {
+				navigator.geolocation.getCurrentPosition(function(position) {
 		            var geocoder = new google.maps.Geocoder();
 		            geocoder.geocode({
 		              "location": new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
@@ -239,7 +245,7 @@ html, body {
 		              if (status == google.maps.GeocoderStatus.OK){
 		                console.log(results[0].formatted_address);
 		                startAddress=results[0].formatted_address;
-		                initMap1(startAddress);
+		                initMap1(startAddress,waypts);
 		              }
 		              else
 		                console.log("Unable to retrieve your address<br />");
@@ -259,7 +265,7 @@ html, body {
 
 		   
 		
-		function initMap1(startAddress) {
+		function initMap1(startAddress,waypts) {
 
 			var directionsDisplay = new google.maps.DirectionsRenderer;
 			var directionsService = new google.maps.DirectionsService;
@@ -277,18 +283,19 @@ html, body {
 			directionsDisplay.setMap(map);
 			directionsDisplay.setPanel(document.getElementById('right-panel'));
 			calculateAndDisplayRoute(directionsService, directionsDisplay,
-					startAddress);
+					startAddress,waypts);
 
 		}
 
 		
 		function calculateAndDisplayRoute(directionsService, directionsDisplay,
-				startAddress) {
+				startAddress,waypts) {
 			var start = String(startAddress);
 			var end = "37.785704, -122.396937";
 			directionsService.route({
 				origin : start,
 				destination : end,
+				waypoints:waypts,
 				travelMode : google.maps.TravelMode.DRIVING
 			}, function(response, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
