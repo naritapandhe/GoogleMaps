@@ -166,6 +166,7 @@ html, body {
 		var map;
 		var infowindow;
 
+		//The below function finds which are the coffee shops located nearby the office
 		function initMap() {
 			var clicktime = {
 				lat : 37.785704,
@@ -187,6 +188,7 @@ html, body {
 			}, callback);
 		}
 
+		//Below function populates the list of nearby coffee shops and displays on the UI 
 		function callback(results, status) {
 			if (status === google.maps.places.PlacesServiceStatus.OK) {
 				for (var i = 0; i < results.length; i++) {
@@ -216,6 +218,7 @@ html, body {
 			}
 		}
 
+		//Below function marks the same coffee ships on map 
 		function createMarker(place) {
 			var placeLoc = place.geometry.location;
 			var marker = new google.maps.Marker({
@@ -234,6 +237,12 @@ html, body {
 	
 	<script>
 		$(document).ready(function() {
+			/** Click func() to get directions to the office
+			*	1. Once the button is clicked, a list of selected coffee shops is built
+			*	2. The transportation mode is set
+			*	3. User's current location is determined and set as the startAddress
+			* 	4. Finally, directions to the destination are calculated	
+			**/
 			$('#getDirections').click(function() {
 				var startAddress;
 				var waypts = [];
@@ -300,6 +309,7 @@ html, body {
 			var map = new google.maps.Map(document.getElementById('map'), {
 				zoom : 7,
 				center : {
+					
 					lat : 37.785704,
 					lng : -122.396937
 				}
@@ -318,6 +328,9 @@ html, body {
 		function calculateAndDisplayRoute(directionsService, directionsDisplay,
 				startAddress,waypts,transportationMode) {
 			var start = String(startAddress);
+			
+			
+			//This is the destination address i.e. ClickTime's office
 			var end = "37.785704, -122.396937";
 			
 			directionsService.route({
