@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Route to ClickTime</title>
+<title>Route to My Office</title>
 
 <!-- Bootstrap core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,8 @@
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -98,55 +100,88 @@ html, body {
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a id="getDirection" data-value="37.785704, -122.396937">
-							Destination: ClickTime (282 2nd Street 4th floor, San Francisco,
-							CA 94105)</a></li>
-						
-
+					<li><a id="getDirectionStart"
+						data-value="47.604004, -122.131133"> Start: 546 156th Avenue
+							Southeast, Bellevue, WA </a></li>
+					<li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<br />
-	<br />
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-9 col-md-10 main">
-				<h2 class="sub-header">Coffe Shops (Nearby ClickTime)</h2>
-				<span id="helpBlock" class="help-block">Below list is limited to coffee shops very close(< 3miles) to Clicktime's office, so that Devs can enjoy a hot cup of coffee :) </span>
-				<span id="helpBlock" class="help-block">Select any one of the coffee shops or select multiple and click on Get Directions! </span>
-				<span id="helpBlock" class="help-block">Directions will be displayed on the right side of the map, including stopovers at selected the coffee shop(s) </span>
+			<div class="col-sm-10 col-md-12 main">
+				<h2 class="sub-header">List of places I frequently go to:</h2>
+				<p id="getDirectionDestination1" data-value="47.645014, -122.122219"></p>
+
+				<!-- 				<span id="helpBlock" class="help-block">Below list is limited to coffee shops very close(< 3miles) to my office, so that I can enjoy a hot cup of coffee :) </span> -->
+				<!-- 				<span id="helpBlock" class="help-block">Select any one of the coffee shops or select multiple and click on Get Directions! </span> -->
+				<!-- 				<span id="helpBlock" class="help-block">Directions will be displayed on the right side of the map, including stopovers at selected the coffee shop(s) </span> -->
 				<div class="table-responsive">
-					<table class="table table-striped" id="coffeShops">
+					<table class="table table-striped table-condensed table-bordered"
+						id="favPlaces">
 						<thead>
 							<tr>
 								<th>#</th>
 								<th>Name</th>
 								<th>Address</th>
-								<th>Select from where to get the coffee and donots</th>
+								<th>Long URL</th>
+								<th>Short URL</th>
+								<th>URL Info</th>
 
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<th><input type="radio" name="destination" value="47.645137,-122.122208"/></th>
+								<th>My Office</th>
+								<th> Microsoft Building 30, 163rd Avenue Northeast, Redmond, WA</th>
+								<th><a target="_blank" href="https://www.google.com/maps/dir/546+156th+Ave+SE,+Bellevue,+WA+98007/
+									Microsoft+Bldg+30,+3910+163rd+Ave+NE,+Redmond,+WA+98052/@47.6246777,-122.1583691,13z/
+									data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x54906c333b56747b:0x842e9a13e8e6fc9d!2m2!1d-122.1311222!2d47.6039896!1m5!1m1!1s0x54906d7a9293db0b:0x63fa3752785e2250!2m2!1d-122.1222083!2d47.6449778">https://www.google.com/maps/dir/546+156th+Ave+SE,+Bellevue,+WA+98007/
+									Microsoft+Bldg+30,+3910+163rd+Ave+NE,+Redmond,+WA+98052/@47.6246777,-122.1583691,13z/
+									data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x54906c333b56747b:0x842e9a13e8e6fc9d!2m2!1d-122.1311222!2d47.6039896!1m5!1m1!1s0x54906d7a9293db0b:0x63fa3752785e2250!2m2!1d-122.1222083!2d47.6449778</a></th>
+								<th><a href="http://bit.ly/1puY17G" target="_blank">bit.ly/1puY17G</a></th>
+								<th><button type="button" class="btn btn-success linkBtn" value="http://bit.ly/1puY17G">Get Info</button></th>
+							</tr>
+							<tr>
+								<th><input type="radio" name="destination" value="47.634808, -122.140501"/></th>
+								<th>Starbucks near my office</th>
+								<th> Starbucks,Overlake Fashion Plaza, 15000 NE 24th St, Redmond, WA 98052</th>
+								<th><a target="_blank" href="https://www.google.com/maps/dir/546+156th+Ave+SE,+Bellevue,+WA+98007/
+									Starbucks,+Overlake+Fashion+Plaza,+15000+NE+24th+St,+Redmond,+WA+98052/@47.6178867,-122.1497,14z
+									/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x54906c333b56747b:0x842e9a13e8e6fc9d!2m2!1d-122.1311222!2">https://www.google.com/maps/dir/546+156th+Ave+SE,+Bellevue,+WA+98007/
+									Starbucks,+Overlake+Fashion+Plaza,+15000+NE+24th+St,+Redmond,+WA+98052/@47.6178867,-122.1497,14z
+									/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x54906c333b56747b:0x842e9a13e8e6fc9d!2m2!1d-122.1311222!2</a></th>
+								<th><a href="http://bit.ly/1R8wV0E" target="_blank">bit.ly/1R8wV0E</a></th>
+								<th><button type="button" class="btn btn-success linkBtn" value="http://bit.ly/1R8wV0E">Get Info</button></th>
+							</tr>
+							<tr>
+								<th><input type="radio" name="destination" value="47.633305, -122.142217"/></th>
+								<th>Thai restaurant near my office</th>
+								<th> Bai Tong Restaurant, Overlake Fashion Plaza, 14804 NE 24th St, Redmond, WA 98052</th>
+								<th><a target="_blank" href="https://www.google.com/maps/dir/546+156th+Ave+SE,+Bellevue,+WA+98007/
+									Bai+Tong+Restaurant+in+Redmond,+Overlake+Fashion+Plaza,+14804+NE+24th+St,+Redmond,+WA+98052/@47.6175579,-122.1497,14z/am=t
+									/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x54906c333b56747b:0x842e9a13e8e6fc9d!2m2!1d-122.1311222!2d47.6039896!1m5!1m1!1s0x54906d084e56c933:0xaafae9559b60634a!2m2!1d-122.141725!2d47.631838">https://www.google.com/maps/dir/546+156th+Ave+SE,+Bellevue,+WA+98007/
+									Bai+Tong+Restaurant+in+Redmond,+Overlake+Fashion+Plaza,+14804+NE+24th+St,+Redmond,+WA+98052/@47.6175579,-122.1497,14z/am=t
+									/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x54906c333b56747b:0x842e9a13e8e6fc9d!2m2!1d-122.1311222!2d47.6039896!1m5!1m1!1s0x54906d084e56c933:0xaafae9559b60634a!2m2!1d-122.141725!2d47.631838</a></th>
+								<th><a href="http://bit.ly/1LzBZuL" target="_blank">bit.ly/1LzBZuL</a></th>
+								<th><button type="button" class="btn btn-success linkBtn" value="http://bit.ly/1LzBZuL">Get Info</button></th>
+							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 
-		<div class="row" style="margin-left: 1%;">
-			<!-- Standard button -->
-			<div class="col-md-1"><input type="radio" name="transportationMode" value="google.maps.TravelMode.DRIVING" checked> Drive</div>
-			<div class="col-md-1"><input type="radio" name="transportationMode" value="google.maps.TravelMode.WALKING" checked> Walk</div> 
-  			<div class="col-md-1"><input type="radio" name="transportationMode" value="google.maps.TravelMode.BICYCLING"> Bike </div> 
-  			<div class="col-md-1"><input type="radio" name="transportationMode" value="google.maps.TravelMode.TRANSIT"> Transit </div>
-  			
-		</div>
 		<br />
 		<div class="row" style="margin-left: 2%;">
 			<!-- Standard button -->
-			<button type="button" class="btn btn-success" id="getDirections">Get Directions</button>
+			<button type="button" class="btn btn-success" id="addFavorite"> Add a favorite </button>
+			<button type="button" class="btn btn-success" id="getDirections">Get
+				Directions</button>
 		</div>
 	</div>
 
@@ -155,10 +190,69 @@ html, body {
 	<div id="right-panel"></div>
 
 	<div id="map"></div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Link Information</h4>
+	      </div>
+	      <div class="modal-body">
+	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+		
+	<!-- Modal -->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Link Information</h4>
+	      </div>
+	      <div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="inputName" class="col-sm-2 control-label">Name</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputName"
+									placeholder="Example: AT&T ">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputAddress" class="col-sm-2 control-label">Address</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputAddress"
+									placeholder="Example: AT&T, Microsoft, West Campus Commons, 15251 NE 40th Street, Redmond, WA 98052 ">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputLongURL" class="col-sm-2 control-label">Long URL</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputLongURL"
+									placeholder="Example: https://www.google.com/maps/dir/546+156th+Ave+SE,+Bellevue,+WA+98007/AT%26T,+Microsoft,+West+Campus+Commons,+15251+NE+40th+Street,+Redmond,+WA+98052/@47.6223596,-122.1719336,13z/am=t/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x54906c333b56747b:0x842e9a13e8e6fc9d!2m2!1d-122.1311222!2d47.6039896!1m5!1m1!1s0x54906d6c3a363bcb:0x21b5f78938b93250!2m2!1d-122.13671!2d47.644446">
+							</div>
+						</div>
+					</form>
+				</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" id="mymodal2Close">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 
@@ -168,194 +262,169 @@ html, body {
 
 		//The below function finds which are the coffee shops located nearby the office
 		function initMap() {
-			var clicktime = {
-				lat : 37.785704,
-				lng : -122.396937
+			var myoffice = {
+				lat : 47.645137,
+				lng : -122.122208
 			};
 
 			map = new google.maps.Map(document.getElementById('map'), {
-				center : clicktime,
-				zoom : 15
+				center : myoffice,
+				zoom : 10
 			});
 
-			infowindow = new google.maps.InfoWindow();
-
+			var infowindow = new google.maps.InfoWindow();
 			var service = new google.maps.places.PlacesService(map);
-			service.nearbySearch({
-				location : clicktime,
-				radius : 150,
-				types : [ 'cafe' ]
-			}, callback);
-		}
 
-		//Below function populates the list of nearby coffee shops and displays on the UI 
-		function callback(results, status) {
-			if (status === google.maps.places.PlacesServiceStatus.OK) {
-				for (var i = 0; i < results.length; i++) {
-					var x = i + 1;
-					var checkboxID = results[i].geometry.location.lat() + ','
-							+ results[i].geometry.location.lng();
-
-					var tr = '<tr>'
-							+ '<td value='+results[i].id+'>'
-							+ x
-							+ '</td>'
-							+ '<td>'
-							+ results[i].name
-							+ '</td>'
-							+'<td>'
-							+results[i].vicinity
-							+'</td>'
-							+ '<td><input type="checkbox" data="'+checkboxID+'" id="'+results[i].id+'" class="coffeShopLocation"></td>'
-							+ '</tr>';
-
-					createMarker(results[i]);
-					$('#coffeShops').append(tr);
-					if (i == 0) {
-						$('#' + results[i].id).attr('checked', true);
-					}
+			service.getDetails({
+				placeId : 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+			}, function(place, status) {
+				if (status === google.maps.places.PlacesServiceStatus.OK) {
+					var marker = new google.maps.Marker({
+						map : map,
+						position : place.geometry.location
+					});
+					google.maps.event.addListener(marker, 'click', function() {
+						infowindow.setContent('<div><strong>' + place.name
+								+ '</strong><br>' + 'Place ID: '
+								+ place.place_id + '<br>'
+								+ place.formatted_address + '</div>');
+						infowindow.open(map, this);
+					});
 				}
-			}
-		}
-
-		//Below function marks the same coffee ships on map 
-		function createMarker(place) {
-			var placeLoc = place.geometry.location;
-			var marker = new google.maps.Marker({
-				map : map,
-				position : place.geometry.location
 			});
 
-			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.setContent(place.name);
-				infowindow.open(map, this);
-			});
 		}
 
+		
 	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSxQE9ocKWuRCLK-_kbE_iD4KMVa_ck&libraries=places&callback=initMap"></script>
-	
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSxQE9ocKWuRCLK-_kbE_iD4KMVa_ck&libraries=places&callback=initMap"></script>
+
 	<script>
 		$(document).ready(function() {
-			/** Click func() to get directions to the office
-			*	1. Once the button is clicked, a list of selected coffee shops is built
-			*	2. The transportation mode is set
-			*	3. User's current location is determined and set as the startAddress
-			* 	4. Finally, directions to the destination are calculated	
-			**/
-			$('#getDirections').click(function() {
-				var startAddress;
-				var waypts = [];
-				var mode=$('input[name="transportationMode"]:checked').val();
-				
-				var MODE = (function() {
-				     var private = {
-				    		 "google.maps.TravelMode.DRIVING": google.maps.TravelMode.DRIVING, 
-							 "google.maps.TravelMode.WALKING": google.maps.TravelMode.WALKING, 
-							 "google.maps.TravelMode.BICYCLING": google.maps.TravelMode.BICYCLING,
-							 "google.maps.TravelMode.TRANSIT": google.maps.TravelMode.TRANSIT
-				     };
+							/** Click func() to get directions to the office
+							 *	1. Once the button is clicked, a list of selected coffee shops is built
+							 *	2. The transportation mode is set
+							 *	3. User's current location is determined and set as the startAddress
+							 * 	4. Finally, directions to the destination are calculated	
+							 **/
+							$('#getDirections').click(function() {
+									var startAddress = "47.604004,-122.131133"
+									var endAddress = $('input[name=destination]:checked', '#favPlaces').val()
+									initMap1(startAddress, endAddress);
+							});
+							
+							$(document).on('click', '.linkBtn', function(){ 
+								console.log("tada!!");
+								var url=$(this).val();
+								console.log(url);
+								var encodedURL="https://api-ssl.bitly.com/v3/link/clicks?access_token=279564e2df7cd9d12c7d892318111aa31f81b1a1&link="+encodeURIComponent(url);
+								console.log(encodedURL);
+								$.ajax({
+									   url: encodedURL,
+									   type: 'GET',
+									   dataType: 'jsonp',
+									   error: function() {
+									      console.log("in error!!!");
+									   },
+									   success: function(results) {
+										  $('.modal-body').html('');
+										  var clickCountDiv="<h4> #Clicks: "+results.data.link_clicks+"</h4>";
+ 										  $('.modal-body').append(clickCountDiv)
+ 										  $('.modal-body').append("<br />");
+									      console.log("in success");
+									      console.log(results);
+									   }
+									  
+								});
+								
+								$('#myModal').modal('show');
+							});
+							
+							$('#addFavorite').click(function(){
+								$('#myModal2').modal('show');
+								
+							});
+							
+							$('#mymodal2Close').click(function(){
+								var inputName=$('#inputName').val();
+								var inputAddress = $('#inputAddress').val();
+								var inputLongURL = $('#inputLongURL').val();
+								var encodedURL =  "https://api-ssl.bitly.com/v3/user/link_save?access_token=279564e2df7cd9d12c7d892318111aa31f81b1a1&longUrl="+encodeURIComponent(inputLongURL);
+								$.ajax({
+									   url: encodedURL,
+									   type: 'GET',
+									   dataType: 'jsonp',
+									   error: function() {
+									      console.log("in error!!!");
+									   },
+									   success: function(results) {
+										   var bitLyLink=results.data.link_save.link;
+										   var stripHttp=bitLyLink.replace(/.*?:\/\//g, "");
+										   var tableRow=
+												'<tr> \
+												 <th><input type="radio" name="destination" value=""/></th> \
+												 <th>'+ inputName +'</th> \
+												 <th>'+ inputAddress + '</th> \
+												 <th><a target="_blank" href="' + inputLongURL + '">' + inputLongURL + '</a></th> \
+												 <th><a href="'+bitLyLink+'" target="_blank">'+ stripHttp + '</a></th> \
+												 <th><button type="button" class="btn btn-success linkBtn" value="' + bitLyLink + '">Get Info</button></th></tr>';
+											
+											$('#favPlaces').append(tableRow);	 
+											$('#myModal2').modal('hide');
+									   }
+									  
+								});
+								
+							})
+							
+							
+						});
 
-				     return {
-				        get: function(name) { return private[name]; }
-				    };
-				})();
+						function initMap1(startAddress, endAddress) {
 
-				var transportationMode=MODE.get(mode);
-				$('input[class="coffeShopLocation"]:checked').each(function() {
-					if ($(this).is(':checked'))
-						console.log($(this).attr("data"));
-						waypts.push({
-					        location: $(this).attr("data"),
-					        stopover: true
-					      });
-				});
-				
-				
-				
-				navigator.geolocation.getCurrentPosition(function(position) {
-		            var geocoder = new google.maps.Geocoder();
-		            geocoder.geocode({
-		              "location": new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-		            },
-		            function(results, status) {
-		              if (status == google.maps.GeocoderStatus.OK){
-		                console.log(results[0].formatted_address);
-		                startAddress=results[0].formatted_address;
-		                initMap1(startAddress,waypts,transportationMode);
-		              }
-		              else
-		                console.log("Unable to retrieve your address<br />");
-		            });
-		          },
-		          function(positionError){
-		        	  console.log("Error: " + positionError.message + "<br />");
-		          },
-		          {
-		            enableHighAccuracy: true,
-		            timeout: 10 * 1000 // 10 seconds
-		          });
-				
-				
+						var directionsDisplay = new google.maps.DirectionsRenderer;	
+						var directionsService = new google.maps.DirectionsService;
+						var map = new google.maps.Map(document.getElementById('map'), {
+							zoom : 7,
+							center : {
+
+								lat : 47.645014,
+								lng : -122.122219
+							}
+						});
+						var infoWindow = new google.maps.InfoWindow({
+							map : map
+						});
+
+						directionsDisplay.setMap(map);
+						directionsDisplay.setPanel(document.getElementById('right-panel'));
+						calculateAndDisplayRoute(directionsService, directionsDisplay,startAddress,endAddress);
+
+						}
+
+						function calculateAndDisplayRoute(directionsService, directionsDisplay,startAddress, endAddress) {
+						var start = String(startAddress);
+
+						//This is the destination address i.e. to my office
+						var end = String(endAddress);
+
+						directionsService.route({
+								origin : start,
+								destination : end,
+								waypoints : [],
+								travelMode : google.maps.TravelMode.DRIVING
+						}, function(response, status) {
+						if (status === google.maps.DirectionsStatus.OK) {
+							$('#right-panel').html('');
+							directionsDisplay.setDirections(response);
+						} else {
+							window.alert('Directions request failed due to ' + status);
+						}
 			});
-		});
-
-		   
-		
-		function initMap1(startAddress,waypts,transportationMode) {
-						
-			var directionsDisplay = new google.maps.DirectionsRenderer;
-			var directionsService = new google.maps.DirectionsService;
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom : 7,
-				center : {
-					
-					lat : 37.785704,
-					lng : -122.396937
-				}
-			});
-			var infoWindow = new google.maps.InfoWindow({
-				map : map
-			});
-
-			directionsDisplay.setMap(map);
-			directionsDisplay.setPanel(document.getElementById('right-panel'));
-			calculateAndDisplayRoute(directionsService, directionsDisplay,startAddress,waypts,transportationMode);
-
-		}
-
-		
-		function calculateAndDisplayRoute(directionsService, directionsDisplay,
-				startAddress,waypts,transportationMode) {
-			var start = String(startAddress);
-			
-			
-			//This is the destination address i.e. ClickTime's office
-			var end = "37.785704, -122.396937";
-			
-			directionsService.route({
-				origin : start,
-				destination : end,
-				waypoints:waypts,
-				travelMode : transportationMode
-			}, function(response, status) {
-				if (status === google.maps.DirectionsStatus.OK) {
-					$('#right-panel').html('');
-					directionsDisplay.setDirections(response);
-				} else {
-					window.alert('Directions request failed due to ' + status);
-				}
-			});
-		}
-
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			infoWindow.setPosition(pos);
-			infoWindow
-					.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
-							: 'Error: Your browser doesn\'t support geolocation.');
 		}
 	</script>
-	
+
 
 </body>
 </html>
